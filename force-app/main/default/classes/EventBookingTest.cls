@@ -6,17 +6,11 @@ public class EventBookingTest {
             // Given
     
             Case request = new Case(Origin = 'Phone',Subject = 'Event Booking', Description = 'Book Spots');
-            
-            // When 
 
             Test.startTest();
 
             Database.SaveResult result = Database.insert(request, false);
-
             Test.stopTest();
-
-            // Then
-
             System.assert(!result.isSuccess());
             System.assert(result.getErrors().size() > 0);
             System.assertEquals('You cannot create a request without attaching an account',
